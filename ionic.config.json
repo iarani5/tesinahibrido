@@ -1,0 +1,7 @@
+{
+  "name": "wizapet",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
