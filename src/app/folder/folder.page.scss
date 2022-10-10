@@ -21,8 +21,16 @@ ion-menu-button {
   line-height: 22px;
   color: #8c8c8c;
   margin: 0;
+  display: inline-block;
+  height: 100%;
+  padding-top: 0.5em;
+
 }
 
 #container a {
   text-decoration: none;
+}
+
+#container .email {
+  padding-left:.6em;
 }
