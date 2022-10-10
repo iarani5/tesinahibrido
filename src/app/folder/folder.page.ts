@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 //photo
 import { PhotoService } from '../services/photo.service';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-folder',
@@ -14,12 +15,14 @@ export class FolderPage implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    public photoService: PhotoService
+    public photoService: PhotoService,
+    private storage: Storage
   ) { }
 
   async ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
     await this.photoService.loadSaved();
+    await this.storage.create();
   }
 
   addPhotoToGallery() {
