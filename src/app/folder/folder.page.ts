@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+//photo
+import { PhotoService } from '../services/photo.service';
+
 @Component({
   selector: 'app-folder',
   templateUrl: './folder.page.html',
@@ -9,10 +12,18 @@ import { ActivatedRoute } from '@angular/router';
 export class FolderPage implements OnInit {
   public folder: string;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    public photoService: PhotoService
+  ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
+    await this.photoService.loadSaved();
+  }
+
+  addPhotoToGallery() {
+    this.photoService.addNewToGallery();
   }
 
 }
