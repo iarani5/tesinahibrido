@@ -63,6 +63,8 @@ export class PhotoService {
         });
 
         // Web platform only: Load the photo as base64 data
+        //photo.webviewPath = `data:image/jpeg;base64,${readFile.data}`;
+        readFile.data = "../../assets/icon/favicon.png";
         photo.webviewPath = `data:image/jpeg;base64,${readFile.data}`;
       }
     }
@@ -87,7 +89,7 @@ export class PhotoService {
       // Details: https://ionicframework.com/docs/building/webview#file-protocol
       return {
         filepath: savedFile.uri,
-        webviewPath: Capacitor.convertFileSrc(savedFile.uri),
+        webviewPath: "../../assets/icon/favicon.png",//Capacitor.convertFileSrc(savedFile.uri),
       };
     }
     else {
