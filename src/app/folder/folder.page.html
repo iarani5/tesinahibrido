@@ -38,14 +38,13 @@
             <ion-content>
               <ion-grid>
                 <ion-row>
-                  <ion-col size="6">
+                  <ion-col size="6" *ngFor="let photo of photoService.photos">
 
-                    <!-- *ngFor=" let photo of photoService.photos; index as position-->
+                    <!-- formControlName="fotopath"-->
 
+                    <ion-img *ngIf="photo.webviewPath" [src]="photo.webviewPath"></ion-img>
 
-                    <!-- HABILITAR ESTO PARA MOBILE 
-                    <ion-img *ngIf="photo.webviewPath" [src]="photo.webviewPath" formControlName="fotopath"></ion-img>
-                    <ion-icon *ngIf="!photo.webviewPath" name="images"></ion-icon>-->
+                    <!-- HABILITAR ESTO PARA MOBILE -->
                   </ion-col>
                 </ion-row>
               </ion-grid>

@@ -34,10 +34,23 @@ export class PhotoService {
   const savedImageFile = await this.savePicture(capturedPhoto);
   this.photos.unshift(savedImageFile);
 
-    /* this.photos.unshift({
+
+
+
+    //-------------------------- ES PRUEBA HAY Q BORRARLO
+    /*const readFile = await Filesystem.readFile({
+      path: ,
+      directory: Directory.Data
+    });
+
+    this.photos.unshift({
       filepath: "soon...",
-      webviewPath: capturedPhoto.webPath
-    });*/
+      webviewPath: `data:image/jpeg;base64,${readFile.data}`;
+    });*/ 
+    //--------------------------
+
+
+
 
   Preferences.set({
     key: this.PHOTO_STORAGE,
@@ -52,7 +65,7 @@ export class PhotoService {
     this.photos = JSON.parse(photoList.value) || [];
 
     // Easiest way to detect when running on the web:
-    // “when the platform is NOT hybrid, do this”
+    // “when the platform is NOT hybrid, do t+his”
     if (!this.platform.is('hybrid')) {
       // Display the photo by reading into base64 format
       for (let photo of this.photos) {
@@ -63,8 +76,6 @@ export class PhotoService {
         });
 
         // Web platform only: Load the photo as base64 data
-        //photo.webviewPath = `data:image/jpeg;base64,${readFile.data}`;
-        readFile.data = "../../assets/icon/favicon.png";
         photo.webviewPath = `data:image/jpeg;base64,${readFile.data}`;
       }
     }
@@ -89,7 +100,7 @@ export class PhotoService {
       // Details: https://ionicframework.com/docs/building/webview#file-protocol
       return {
         filepath: savedFile.uri,
-        webviewPath: "../../assets/icon/favicon.png",//Capacitor.convertFileSrc(savedFile.uri),
+        webviewPath: Capacitor.convertFileSrc(savedFile.uri),
       };
     }
     else {

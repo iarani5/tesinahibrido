@@ -27,7 +27,6 @@ export class FolderPage implements OnInit {
     this.todo = this.formBuilder.group({
       situacion: ['', Validators.required],
       especie: ['', Validators.required],
-      fotopath: [''],
       castrado: [''],
       raza: ['', Validators.required],
       comentarios: ['', Validators.required],
@@ -71,7 +70,6 @@ export class FolderPage implements OnInit {
 export interface ProfileComponent {
   situacion: string;
   especies: string;
-  fotopath: string;
   castreado: boolean;
   raza: string;
   comentarios: string;
