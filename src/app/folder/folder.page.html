@@ -3,18 +3,18 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ folder }}</ion-title> 
+    <ion-title>{{ folder }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
- <!-- <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
-    </ion-toolbar>
-  </ion-header>-->
+<ion-content [fullscreen]="true" *ngIf="!checkStatus">
+  <!-- <ion-header collapse="condense">
+     <ion-toolbar>
+       <ion-title size="large">{{ folder }}</ion-title>
+     </ion-toolbar>
+   </ion-header>-->
 
-  <div id="container"> 
+  <div id="container">
     <form [formGroup]="todo" (ngSubmit)="logForm()">
 
       <ion-grid>
@@ -23,7 +23,7 @@
           <ion-col size="6">
             <ion-list>
               <ion-item>
-                <ion-select placeholder="Situacion"  formControlName="situacion">
+                <ion-select placeholder="Situacion" formControlName="situacion">
                   <ion-select-option value="perdido">Perdido</ion-select-option>
                   <ion-select-option value="encontrado">Encontrado</ion-select-option>
                   <ion-select-option value="en_adopcion">En adopcion</ion-select-option>
@@ -67,8 +67,8 @@
             <ion-list>
               <ion-item>
                 <ion-select placeholder="Especie" formControlName="especie">
-                  <ion-select-option value="gato">Gato</ion-select-option>
-                  <ion-select-option value="perro">Perro</ion-select-option>
+                  <ion-select-option value="Gato">Gato</ion-select-option>
+                  <ion-select-option value="Perro">Perro</ion-select-option>
                 </ion-select>
               </ion-item>
             </ion-list>
@@ -159,4 +159,72 @@
 
     </form>
   </div>
+</ion-content>
+
+
+
+<ion-content class="ion-padding" *ngIf="checkStatus">
+
+  <p>Publicacion creada con exito</p>
+  <ion-button id="open-modal" expand="block">Ver publicacion</ion-button>
+  <ion-button (click)="goBack()" expand="block">Volver</ion-button>
+
+
+  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()"></ion-button>
+          </ion-buttons>
+          <ion-title></ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="cancel()" [strong]="true">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding usr_pet">
+
+        <h1> {{ message.especie }} {{ message.situacion }}</h1>
+
+        <p>{{ message.comentarios }}</p>
+
+        <table>
+          <tr>
+            <td>Raza</td>
+            <td> {{ message.raza }} </td>
+          </tr>
+
+          <tr>
+            <td>Esta castrado</td>
+            <td> {{ message.castrado }} </td>
+          </tr>
+
+        </table>
+
+        <h2>Datos de contacto</h2>
+
+        <table>
+          <tr>
+            <td>Humano</td>
+            <td> {{ message.nombre }} {{ message.apellido }} </td>
+          </tr>
+
+          <tr>
+            <td>Cel</td>
+            <td> +549 11{{ message.celular }} </td>
+          </tr>
+          <tr>
+            <td>Mail</td>
+            <td> {{ message.email }} </td>
+          </tr>
+
+        </table>
+        <!--<ion-item>
+    <ion-label position="stacked">Enter your name</ion-label>
+    <ion-input type="text" placeholder="Your name" [(ngModel)]="name"></ion-input>
+  </ion-item>-->
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>
