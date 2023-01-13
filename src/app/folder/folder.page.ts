@@ -126,10 +126,12 @@ export class FolderPage implements OnInit {
 
   }
 
+
   async save() {
 
     const querySnapshot = await getDocs(collection(db, this.name));
     querySnapshot.forEach((doc) => {
+
       if (doc.data()) {
         this.checkStatus = true;
         this.message = doc.data();

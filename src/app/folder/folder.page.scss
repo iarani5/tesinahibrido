@@ -59,3 +59,10 @@ table {
   width: 100%;
   border-collapse: collapse;
 }
+
+.photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}

@@ -20,7 +20,8 @@ export class PhotoService {
   public photos: UserPhoto[] = [];
   private PHOTO_STORAGE: string =  'photos'; 
   private platform: Platform;
-  public name_key_user: string; //id with photos from user   
+  public name_key_user: string; //id with photos from user
+  public finalphoto: UserPhoto; 
 
   constructor(
 
@@ -49,8 +50,6 @@ export class PhotoService {
       value: JSON.stringify(this.photos),
     });
 
-    console.log(savedImageFile); //esta guarando  {"__zone_symbol__state":null,"__zone_symbol__value":[]} el valor varia
-
     return JSON.stringify(savedImageFile);
   }
 
@@ -73,10 +72,22 @@ export class PhotoService {
 
         // Web platform only: Load the photo as base64 data
         photo.webviewPath = `data:image/jpeg;base64,${readFile.data}`;
+
       }
     }
 
+  
+
+
+    /*<ion-col * ngFor="let tag of photoService.photos | slice:0:1; let last=last" >
+      <ion-img * ngIf="tag.webviewPath"[src] = "tag.webviewPath" > </ion-img>
+      < /ion-col>*/
+
+
   }
+
+
+
 
 
   private async savePicture(photo: Photo) {
