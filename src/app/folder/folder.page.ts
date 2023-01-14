@@ -58,7 +58,7 @@ export class FolderPage implements OnInit {
   public message;
   checkStatus: boolean;
   public folder: string;
-  user: ProfileComponent;
+ // user: ProfileComponent;
   private todo: FormGroup;
   public name = 'user_pet' + Date.now();
   private savedImageFile;
@@ -168,8 +168,6 @@ export class FolderPage implements OnInit {
 
   async addPhotoToGallery() {
     this.savedImageFile = await this.photoService.addNewToGallery(); //aca esta la ruta y el nombre de las fotos
-
-    console.log(this.savedImageFile);
   }
 
   /*

@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Platform } from '@ionic/angular'; //used to retrieve information about the current device
 
-
-import { FolderPage } from '../folder/folder.page';
-
-
 //photo
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { Filesystem, Directory } from '@capacitor/filesystem';
@@ -21,7 +17,7 @@ export class PhotoService {
   private PHOTO_STORAGE: string =  'photos'; 
   private platform: Platform;
   public name_key_user: string; //id with photos from user
-  public finalphoto: UserPhoto; 
+  public finalphoto: string; 
 
   constructor(
 
@@ -50,7 +46,10 @@ export class PhotoService {
       value: JSON.stringify(this.photos),
     });
 
+    this.finalphoto = this.photos[0].webviewPath;
+
     return JSON.stringify(savedImageFile);
+
   }
 
   public async loadSaved(name) {
@@ -74,6 +73,8 @@ export class PhotoService {
         photo.webviewPath = `data:image/jpeg;base64,${readFile.data}`;
 
       }
+
+
     }
 
   

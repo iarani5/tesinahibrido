@@ -43,26 +43,12 @@
 
           </ion-col>
           <ion-col size="6">
-            <ion-img src="assets/icon/nuevo_proyecto.png"></ion-img>
-
-            <!-- FALTA HACER APARECER LA IMG CARGADA
-   <ion-img *ngIf="PhotoService.photos[0]" [src]="PhotoService.photos[0].webviewPath"></ion-img>-->
-
+            <ion-img *ngIf = "!photoService.finalphoto" src="assets/icon/nuevo_proyecto.png"></ion-img>
+            <ion-img *ngIf = "photoService.finalphoto" [src]="photoService.finalphoto"></ion-img>
 
             <ion-fab-button (click)="addPhotoToGallery()">
               <ion-icon name="camera"></ion-icon>
             </ion-fab-button>
-
-
-
-            <!-- <ion-content>
-              <ion-fab slot="fixed">
-                vertical="bottom" horizontal="center" slot="fixed"
-              <ion-fab-button (click)="addPhotoToGallery()">
-                <ion-icon name="camera"></ion-icon>
-              </ion-fab-button>
-              </ion-fab>
-  </ion-content>-->
 
           </ion-col>
 
@@ -193,19 +179,8 @@
 
         <h1> {{ message.especie }} {{ message.situacion }}</h1>
 
-
-
-        <!--
-        <ion-content>
-          <ion-grid>
-            <ion-row>
-              <ion-col size="6" *ngFor="let photo of photoService.photos[photoService.photos.lengh]">
-
-                <ion-img *ngIf="photo.webviewPath" [src]="photo.webviewPath"></ion-img>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-content>-->
+        <ion-img *ngIf="!photoService.finalphoto" src="assets/icon/nuevo_proyecto.png"></ion-img>
+        <ion-img *ngIf="photoService.finalphoto" [src]="photoService.finalphoto"></ion-img>
 
         <p>{{ message.comentarios }}</p>
 
@@ -241,9 +216,9 @@
 
         </table>
         <!--<ion-item>
-          <ion-label position="stacked">Enter your name</ion-label>
-          <ion-input type="text" placeholder="Your name" [(ngModel)]="name"></ion-input>
-        </ion-item>-->
+    <ion-label position="stacked">Enter your name</ion-label>
+    <ion-input type="text" placeholder="Your name" [(ngModel)]="name"></ion-input>
+  </ion-item>-->
       </ion-content>
     </ng-template>
   </ion-modal>
