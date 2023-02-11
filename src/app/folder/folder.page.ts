@@ -12,19 +12,11 @@ import { Preferences, SetOptions, GetOptions, RemoveOptions } from '@capacitor/p
 import { async } from 'rxjs';
 
 //bdd
-// Import the functions you need from the SDKs you need
+// Import the functions you need from  
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 import { collection, addDoc, getDocs } from "firebase/firestore"; 
-
-
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
 const firebaseConfig = {
   apiKey: "AIzaSyAfjTL5pun-50H3KVGIryYVqnCD2jsA3Eg",
@@ -188,7 +180,8 @@ export class FolderPage implements OnInit {
   }
 
   goBack() {
-    this.todo = null;
+    this.todo.reset();
+    this.savedImageFile = this.photoService.emptyPicture();
     this.checkStatus = false;
   }
   /*onWillDismiss(event: Event) {

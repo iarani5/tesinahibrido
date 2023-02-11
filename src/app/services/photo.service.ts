@@ -52,6 +52,10 @@ export class PhotoService {
 
   }
 
+  public emptyPicture() {
+    this.finalphoto = "";
+  }
+
   public async loadSaved(name) {
      // Retrieve cached photo array data
     //const photoList = await Preferences.get({ key: this.PHOTO_STORAGE });
