@@ -47,10 +47,6 @@ ion-menu-button {
   font-size:1.4em;
 }
 
-table, td, th {
-  border: 1px solid;
-}
-
 td {
   padding: .5em;
 }
@@ -69,4 +65,16 @@ table {
 
 ion-fab-button {
   float: right;
+}
+
+table, table tr, table tr tc{
+  border: none;
+}
+
+#container form ion-button{
+    width:100%;
+}
+
+.image{
+    width: 70%;
 }
